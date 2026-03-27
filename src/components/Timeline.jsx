@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { itinerary } from '../data/itinerary.js';
+import DayModal from './DayModal.jsx';
 import './Timeline.css';
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -17,6 +18,7 @@ function formatDate(dateStr) {
 function Timeline() {
   const sectionRefs = useRef([]);
   const cardRefs    = useRef([]);
+  const [modalDay, setModalDay] = useState(null);
 
   // Parallax: move background slower than scroll
   useEffect(() => {
@@ -120,10 +122,21 @@ function Timeline() {
                         style={{ background: day.countryColor }}
                         aria-hidden="true"
                       />
-                      {act}
+                      {act.title}
                     </li>
                   ))}
                 </ul>
+
+                {/* Read more CTA */}
+                <button
+                  className="tl-read-more"
+                  style={{ '--accent': day.countryColor }}
+                  onClick={() => setModalDay(day)}
+                  aria-label={`Read more about Day ${day.dayNumber} in ${day.city}`}
+                >
+                  Read more
+                  <span className="tl-read-more-arrow" aria-hidden="true">→</span>
+                </button>
               </div>
             </article>
           </section>
@@ -135,6 +148,11 @@ function Timeline() {
         <div className="tl-end-dot" />
         <p className="tl-end-label">Journey complete 🎉</p>
       </div>
+
+      {/* Day detail modal */}
+      {modalDay && (
+        <DayModal day={modalDay} onClose={() => setModalDay(null)} />
+      )}
     </div>
   );
 }

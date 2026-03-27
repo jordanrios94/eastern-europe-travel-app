@@ -10,10 +10,26 @@ export const itinerary = [
     travelNote: null,
     imageUrl: "https://picsum.photos/seed/sofia-cathedral/1920/1080",
     activities: [
-      "Alexander Nevsky Cathedral",
-      "Roman ruins of Serdica",
-      "Vitosha Boulevard (cafés and restaurants)",
-      "Sunset view from Vitosha Mountain",
+      {
+        title: "Alexander Nevsky Cathedral",
+        description: "One of the largest Eastern Orthodox cathedrals in the world, the Alexander Nevsky Cathedral was built in the early 20th century to honour the Russian soldiers who died liberating Bulgaria from Ottoman rule. Its golden domes dominate the Sofia skyline, while inside you'll find breathtaking neo-Byzantine mosaics, chandeliers, and an atmospheric crypt museum housing ancient icons.",
+        coordinates: { lat: 42.6951, lng: 23.3320 },
+      },
+      {
+        title: "Roman ruins of Serdica",
+        description: "Hidden beneath the modern city centre, the ruins of Serdica reveal Sofia's ancient Roman past. Emperor Constantine the Great famously called Serdica 'my Rome', and today you can walk through exposed streets, baths and basilicas dating back to the 2nd–4th centuries AD, most spectacularly visible in the underpass near the Presidency building.",
+        coordinates: { lat: 42.6977, lng: 23.3219 },
+      },
+      {
+        title: "Vitosha Boulevard (cafés and restaurants)",
+        description: "Sofia's elegant pedestrian high street, Vitosha Boulevard (locally called 'Vitoshka') stretches from the National Palace of Culture to the city centre. Lined with boutiques, pavement cafés and restaurants, it is the ideal place to people-watch over a Bulgarian espresso or sample local cuisine, with Vitosha Mountain as a striking backdrop at the southern end.",
+        coordinates: { lat: 42.6893, lng: 23.3192 },
+      },
+      {
+        title: "Sunset view from Vitosha Mountain",
+        description: "Rising dramatically above the capital to 2,290 m, Vitosha Mountain is Sofia's natural playground and is accessible by a short bus or taxi ride. Hike or take the chairlift to the Kopitoto peak area to catch a panoramic sunset over the city and, on clear evenings, the entire Balkan range — a truly memorable way to end the day.",
+        coordinates: { lat: 42.5817, lng: 23.2885 },
+      },
     ],
   },
   {
@@ -27,8 +43,16 @@ export const itinerary = [
     travelNote: "Day trip from Sofia",
     imageUrl: "https://picsum.photos/seed/rila-forest-lake/1920/1080",
     activities: [
-      "Visit the UNESCO-listed Rila Monastery",
-      "Optional hike to the Seven Rila Lakes",
+      {
+        title: "Visit the UNESCO-listed Rila Monastery",
+        description: "Founded in the 10th century by St John of Rila, the Rila Monastery is Bulgaria's most revered spiritual site and a UNESCO World Heritage treasure. Enclosed by fortified stone walls, the courtyard dazzles with striped arches, vivid frescoes and the medieval Hrelyo Tower. The monastery church interior is covered floor-to-ceiling in more than 1,200 intricate biblical scenes painted by master craftsmen.",
+        coordinates: { lat: 42.1329, lng: 23.3413 },
+      },
+      {
+        title: "Optional hike to the Seven Rila Lakes",
+        description: "Nestled at altitudes between 2,095 m and 2,535 m, the Seven Rila Lakes are a glacial chain of impossibly blue Alpine lakes, each named for a distinctive feature — The Tear, The Eye, The Kidney, The Twin, The Trefoil, The Fish Lake and The Lower Lake. The circular trail (about 7 km) winds through high meadows, boulder fields and wildflower slopes with sweeping Rila massif views.",
+        coordinates: { lat: 42.1822, lng: 23.3131 },
+      },
     ],
   },
   {
@@ -42,9 +66,21 @@ export const itinerary = [
     travelNote: "Travel from Sofia to Plovdiv (~2 hours)",
     imageUrl: "https://picsum.photos/seed/plovdiv-oldtown/1920/1080",
     activities: [
-      "Roman Theatre",
-      "Old Town with colorful houses",
-      "Kapana creative district (bars & street art)",
+      {
+        title: "Roman Theatre",
+        description: "Plovdiv's Ancient Theatre is one of the best-preserved Roman theatres in the world, dating to the 1st century AD and seating up to 7,000 spectators. Built into the hillside of Nebet Tepe, it still hosts opera and classical concerts in summer. From the upper tiers you get a sweeping view over the red-tiled rooftops of the Old Town towards the Rhodope mountains.",
+        coordinates: { lat: 42.1467, lng: 24.7522 },
+      },
+      {
+        title: "Old Town with colourful houses",
+        description: "Plovdiv's Old Town (Staria Grad) is arguably the most charming neighbourhood in Bulgaria — a labyrinth of cobblestone streets climbing three hills, lined with National Revival-era mansions in vivid yellows, blues and terracottas. Many house museums, galleries and boutique hotels. The area was chosen as one of Europe's Capitals of Culture in 2019, cementing its international reputation.",
+        coordinates: { lat: 42.1485, lng: 24.7473 },
+      },
+      {
+        title: "Kapana creative district (bars & street art)",
+        description: "Kapana (meaning 'The Trap') is Plovdiv's buzzing creative quarter — a grid of narrow lanes that used to house craftsmen's workshops, now transformed into an artsy neighbourhood of independent bars, coffee roasters, studios and galleries. Every building seems to wear a mural; the vibe is bohemian and welcoming day or night.",
+        coordinates: { lat: 42.1442, lng: 24.7490 },
+      },
     ],
   },
   {
@@ -58,9 +94,21 @@ export const itinerary = [
     travelNote: "Morning in Plovdiv, then travel to Bucharest, Romania",
     imageUrl: "https://picsum.photos/seed/bucharest-arrive/1920/1080",
     activities: [
-      "Arrive and check in",
-      "Evening walk along Calea Victoriei boulevard",
-      "Explore Old Town for dinner and nightlife",
+      {
+        title: "Arrive and check in",
+        description: "After crossing into Romania, settle into your accommodation in central Bucharest. The city rewards first impressions — wide Haussmann-inspired boulevards, art nouveau villas half-swallowed by greenery, and a skyline punctuated by Orthodox spires. Take a moment to decompress and orient yourself before the evening.",
+        coordinates: { lat: 44.4396, lng: 26.0963 },
+      },
+      {
+        title: "Evening walk along Calea Victoriei boulevard",
+        description: "Bucharest's grandest boulevard, Calea Victoriei stretches from Splaiul Independenței in the south to Piața Victoriei in the north. Strolling it in the evening is a pleasure — illuminated Belle Époque facades, the Romanian Athenaeum concert hall, the CEC Palace and a string of terraced restaurants make it feel effortlessly glamorous. It was once dubbed the 'Champs-Élysées of Bucharest'.",
+        coordinates: { lat: 44.4401, lng: 26.0974 },
+      },
+      {
+        title: "Explore Old Town for dinner and nightlife",
+        description: "Bucharest's Lipscani Old Town district is the beating heart of the city's nightlife. Medieval-era lanes are packed with craft beer bars, wine cellars, rooftop terraces and Romanian restaurants serving mici (grilled sausages), sarmale (stuffed cabbage) and local wines. The atmosphere builds from early evening and keeps going well into the early hours.",
+        coordinates: { lat: 44.4324, lng: 26.1001 },
+      },
     ],
   },
   {
@@ -74,10 +122,26 @@ export const itinerary = [
     travelNote: null,
     imageUrl: "https://picsum.photos/seed/bucharest-parliament/1920/1080",
     activities: [
-      "Palace of Parliament (world's heaviest building)",
-      "Revolution Square and Memorial of Rebirth",
-      "Village Museum in Herăstrău Park",
-      "Old Town nightlife",
+      {
+        title: "Palace of Parliament (world's heaviest building)",
+        description: "Commissioned by Nicolae Ceaușescu in 1984 and still not entirely finished, the Palace of Parliament is the world's heaviest building and the second-largest administrative building after the Pentagon. Guided tours take you through gilded halls, sweeping marble staircases and cavernous chambers, giving an extraordinary insight into the megalomania of communist-era Romania.",
+        coordinates: { lat: 44.4276, lng: 26.0875 },
+      },
+      {
+        title: "Revolution Square and Memorial of Rebirth",
+        description: "Revolution Square was the epicentre of Romania's 1989 revolution — it was from the balcony of the Central Committee building here that Ceaușescu gave his final speech before fleeing. The square is now home to the Memorial of Rebirth, a striking white marble column, and several museums documenting the uprising. A powerful, sobering place.",
+        coordinates: { lat: 44.4401, lng: 26.0974 },
+      },
+      {
+        title: "Village Museum in Herăstrău Park",
+        description: "Set on the shores of Lake Herăstrău, the National Village Museum is an open-air ethnographic collection of more than 270 traditional farmhouses, churches, mills and workshops transplanted from across Romania. Walking through its pine-shaded paths feels like a journey across centuries of rural Romanian life.",
+        coordinates: { lat: 44.4688, lng: 26.0785 },
+      },
+      {
+        title: "Old Town nightlife",
+        description: "For the second night running, Lipscani Old Town offers something for every taste — jazz bars, rooftop cocktail lounges, underground clubs and laid-back wine bars. The area truly comes alive after dark and is one of the liveliest nightlife scenes in Eastern Europe.",
+        coordinates: { lat: 44.4324, lng: 26.1001 },
+      },
     ],
   },
   {
@@ -91,9 +155,21 @@ export const itinerary = [
     travelNote: "Travel from Bucharest to Brașov (~2.5 hours)",
     imageUrl: "https://picsum.photos/seed/brasov-mountains/1920/1080",
     activities: [
-      "Council Square and city centre",
-      "Black Church (Gothic landmark)",
-      "Cable car to Tampa Mountain",
+      {
+        title: "Council Square and city centre",
+        description: "Piața Sfatului (Council Square) is the medieval heart of Brașov and one of the most picturesque squares in Romania. Ringed by pastel baroque and Gothic buildings, the square is anchored by the old Council House (now a history museum) and flows into lanes of cafés and boutiques. The surrounding streets reveal a city shaped by Saxon craftsmen who settled here in the 13th century.",
+        coordinates: { lat: 45.6427, lng: 25.5888 },
+      },
+      {
+        title: "Black Church (Gothic landmark)",
+        description: "The Black Church (Biserica Neagră) is the largest Gothic church in Romania and one of the finest in south-eastern Europe. Built between 1383 and 1477, it earned its name after a 1689 fire blackened its walls. Inside you'll find a vast 4,000-pipe organ and an extraordinary collection of Anatolian rugs — a surprising gift from Ottoman merchants who traded with the city.",
+        coordinates: { lat: 45.6408, lng: 25.5889 },
+      },
+      {
+        title: "Cable car to Tampa Mountain",
+        description: "A short cable-car ride (or a vigorous 45-minute hike) brings you to the summit of Tampa Mountain (960 m), the forested peak that overlooks Brașov from the south. At the top, the 'Brașov' Hollywood-style sign sits just below the summit, and the panoramic viewpoint looks out over the entire city bowl, the Saxon rooftops and the snow-dusted Bucegi Mountains beyond.",
+        coordinates: { lat: 45.6461, lng: 25.6018 },
+      },
     ],
   },
   {
@@ -107,8 +183,16 @@ export const itinerary = [
     travelNote: null,
     imageUrl: "https://picsum.photos/seed/bran-castle-forest/1920/1080",
     activities: [
-      "Day trip to Bran Castle (Dracula's Castle)",
-      "Seven Ladders Canyon hike",
+      {
+        title: "Day trip to Bran Castle (Dracula's Castle)",
+        description: "Perched dramatically on a rocky promontory above the Transylvanian plain, Bran Castle is the world-famous 'Dracula's Castle'. While Bram Stoker never actually visited, the castle's silhouette matched his gothic imagination perfectly. Inside, a labyrinth of turrets, spiral staircases and royal apartments tells the real story: it was a favourite summer residence of Queen Marie of Romania, who decorated it with extraordinary antiques and art.",
+        coordinates: { lat: 45.5152, lng: 25.3672 },
+      },
+      {
+        title: "Seven Ladders Canyon hike",
+        description: "A spectacular gorge carved through limestone cliffs just 12 km from Brașov, Cheile Șșapte Scări (Seven Ladders Canyon) takes its name from the seven fixed metal ladders that climb the canyon walls, some beside thundering waterfalls. The round hike takes about two to three hours and rewards with dramatic views of the Bucegi plateau and the emerald Dâmbovița valley below.",
+        coordinates: { lat: 45.5897, lng: 25.5284 },
+      },
     ],
   },
   {
@@ -122,9 +206,21 @@ export const itinerary = [
     travelNote: null,
     imageUrl: "https://picsum.photos/seed/carpathian-national-park/1920/1080",
     activities: [
-      "Piatra Craiului National Park",
-      "Explore Brașov medieval streets and walls",
-      "Poiana Brasov resort area",
+      {
+        title: "Piatra Craiului National Park",
+        description: "Piatra Craiului (King's Rock) is a narrow limestone ridge that rises sharply to 2,238 m — one of the most striking natural formations in the Carpathians. The national park protects rare wildflowers, brown bears, lynx and wolves. The main ridge trail is demanding but legendary among Romanian hikers; shorter lower-valley walks offer meadows, gorges and mountain village scenery with far less effort.",
+        coordinates: { lat: 45.5167, lng: 25.2167 },
+      },
+      {
+        title: "Explore Brașov medieval streets and walls",
+        description: "Brașov preserves some of the best-surviving medieval fortifications in Romania. The Rope Street (Strada Sforii) — just 111 cm wide — is one of Europe's narrowest streets. The old defence towers (White Tower, Black Tower, Graft Bastion) ring the city and can be climbed for views over the Saxon roofscape. Wandering without a map here is its own adventure.",
+        coordinates: { lat: 45.6438, lng: 25.5878 },
+      },
+      {
+        title: "Poiana Brasov resort area",
+        description: "Perched at 1,030 m on the slopes of Mount Postăvaru, Poiana Brașov is Romania's premier mountain resort — and equally enjoyable in summer as in winter. Take the gondola to the upper slopes, hike through spruce forests, or simply relax at one of the terrace restaurants with sweeping views over the Carpathian ridgeline and the Bârsa valley below.",
+        coordinates: { lat: 45.5972, lng: 25.5711 },
+      },
     ],
   },
   {
@@ -138,9 +234,21 @@ export const itinerary = [
     travelNote: "Travel from Brașov to Sibiu",
     imageUrl: "https://picsum.photos/seed/sibiu-medieval-square/1920/1080",
     activities: [
-      "Large Square",
-      "Bridge of Lies",
-      "Medieval old town streets",
+      {
+        title: "Large Square (Piața Mare)",
+        description: "Piața Mare is Sibiu's grand central square — a vast cobbled expanse ringed by patrician town houses with distinctive 'eyelid' dormer windows that peer down like watchful faces. The square has hosted markets, executions and celebrations for seven centuries. Today its pavement terraces are perfect for a coffee or a glass of Romanian wine while watching the world pass by.",
+        coordinates: { lat: 45.7974, lng: 24.1522 },
+      },
+      {
+        title: "Bridge of Lies (Podul Minciunilor)",
+        description: "One of the first cast-iron bridges in Romania (1859), the Podul Minciunilor links Piața Mare to the Lower Town via a wrought-iron span over a narrow lane. Local legend holds that the bridge creaks whenever someone tells a lie on it — possibly spread by the merchants who used to trade beneath it. The passage below opens onto the beautiful Small Square (Piața Mică).",
+        coordinates: { lat: 45.7961, lng: 24.1510 },
+      },
+      {
+        title: "Medieval old town streets",
+        description: "Sibiu's historic centre is among the best-preserved in Central Europe. Wander the Upper Town's narrow lanes past Baroque palaces, herb-fragrant courtyards and artisan workshops. Don't miss the Brukenthal National Museum — housed in an 18th-century Baroque palace, it is one of the oldest museums in Europe — or the vast Evangelical Cathedral, which towers over the rooftops.",
+        coordinates: { lat: 45.7981, lng: 24.1482 },
+      },
     ],
   },
   {
@@ -154,9 +262,21 @@ export const itinerary = [
     travelNote: "Travel from Sibiu to Iași (eastern Romania)",
     imageUrl: "https://picsum.photos/seed/iasi-culture-palace/1920/1080",
     activities: [
-      "Palace of Culture",
-      "Metropolitan Cathedral",
-      "Historic center and cafés",
+      {
+        title: "Palace of Culture",
+        description: "Iași's Palace of Culture is a neo-Gothic masterpiece that dominates the city's skyline with its 8,000 m² of floor space, 365 rooms and soaring central tower. Completed in 1926 on the site of the old Moldavian royal court, it now houses four museums — history, art, ethnography and science. The polychrome marble lobby and grand staircase alone justify the visit.",
+        coordinates: { lat: 47.1581, lng: 27.5912 },
+      },
+      {
+        title: "Metropolitan Cathedral",
+        description: "The imposing Metropolitan Cathedral of Iași is one of the largest Orthodox churches in Romania, completed in 1886 by architect Alexandru Orăscu. It serves as the spiritual centre of Moldavian Orthodoxy and houses the relics of Saint Parascheva — drawing hundreds of thousands of pilgrims to the city every October. The interior is richly decorated with Byzantine-style frescoes and gilded iconostases.",
+        coordinates: { lat: 47.1564, lng: 27.5878 },
+      },
+      {
+        title: "Historic center and cafés",
+        description: "Iași's city centre rewards leisurely exploration — the Copou Park with its lime-tree alley, the Dosoftei House (one of the oldest buildings in Moldova), and the bustling Piața Unirii with its pavement cafés are all worth your time. As Romania's former capital and a major university city, Iași has an intellectual, unhurried atmosphere unlike anywhere else in the country.",
+        coordinates: { lat: 47.1585, lng: 27.6014 },
+      },
     ],
   },
   {
@@ -170,10 +290,26 @@ export const itinerary = [
     travelNote: "Travel from Iași to Odesa, Ukraine",
     imageUrl: "https://picsum.photos/seed/odesa-black-sea/1920/1080",
     activities: [
-      "Odessa Opera House",
-      "Potemkin Stairs",
-      "Walk along the Black Sea promenade",
-      "Explore the historic center",
+      {
+        title: "Odessa Opera House",
+        description: "The Odessa National Academic Theatre of Opera and Ballet is widely regarded as one of the most beautiful opera houses in Europe. Built in 1887 in a blend of Viennese Baroque and Rococo styles, its sumptuous auditorium — draped in red velvet, gilded plaster and crystal chandeliers — can seat over 1,600 guests. Tchaikovsky and Pavarotti have performed here; the building is a monument to the city's cosmopolitan golden age.",
+        coordinates: { lat: 46.4855, lng: 30.7391 },
+      },
+      {
+        title: "Potemkin Stairs",
+        description: "The Potemkin Stairs are a monumental neoclassical staircase of 192 steps that sweeps from the harbour up to the city. Built in 1841 and immortalised by Eisenstein's 1925 film 'Battleship Potemkin', they appear far longer from the top than from the bottom — an optical illusion achieved by widening each step from bottom to top. The panoramic view over the Black Sea and port from the summit is iconic.",
+        coordinates: { lat: 46.4876, lng: 30.7410 },
+      },
+      {
+        title: "Walk along the Black Sea promenade",
+        description: "Odesa's Langeron and Arcadia beaches stretch south along the Black Sea coast, connected by a breezy promenade lined with chestnut trees, beach clubs and seafood stalls. In June the sea is warm, the crowds light and the light golden — an easy afternoon of sunbathing, swimming or simply strolling with an ice cream while watching the cargo ships move in and out of the port.",
+        coordinates: { lat: 46.4789, lng: 30.7408 },
+      },
+      {
+        title: "Explore the historic center",
+        description: "Odesa's city centre is a UNESCO-nominated ensemble of 19th-century neoclassical and art nouveau architecture. Deribasivska Street is the pedestrian heart — lined with restaurants, bookshops and cafés under spreading plane trees. Nearby Primorsky Boulevard was described by Mark Twain as 'the most beautiful street I have ever seen'. The Passage shopping arcade, with its glass-roofed galleria, is worth ducking into.",
+        coordinates: { lat: 46.4825, lng: 30.7233 },
+      },
     ],
   },
   {
@@ -187,9 +323,21 @@ export const itinerary = [
     travelNote: "Travel from Odesa to Chișinău, Moldova",
     imageUrl: "https://picsum.photos/seed/chisinau-boulevard/1920/1080",
     activities: [
-      "Stefan cel Mare Boulevard",
-      "Nativity Cathedral",
-      "Triumphal Arch",
+      {
+        title: "Stefan cel Mare Boulevard",
+        description: "Bulevardul Ștefan cel Mare și Sfânt is Chișinău's main artery, named after Moldova's greatest medieval ruler. Shaded by chestnut trees, it links the central park — dominated by a bronze equestrian statue of Stefan — to the government quarter. The boulevard is the place to feel the city's pulse, with street musicians, pavement cafés and evening strollers out in force.",
+        coordinates: { lat: 47.0229, lng: 28.8352 },
+      },
+      {
+        title: "Nativity Cathedral",
+        description: "The Chișinău Nativity Cathedral, completed in 1836 in neoclassical style, sits at the heart of the central park and is Moldova's most important Orthodox church. Its tall white bell tower is visible from across the city centre. The cathedral's interior is lavishly decorated with frescoes and gilded iconostases, and the park around it — with fountains and shaded benches — is a favourite place for locals to relax.",
+        coordinates: { lat: 47.0222, lng: 28.8341 },
+      },
+      {
+        title: "Triumphal Arch",
+        description: "The Chișinău Triumphal Arch (Arcul de Triumf) was built in 1840 to commemorate Russia's victory over the Ottoman Empire in the 1828–29 war. Standing 13 metres tall in neoclassical style at the head of the central park, it frames a perfect view of the Nativity Cathedral behind it. The arch originally held a bell cast from captured Ottoman cannon, now in the bell tower of the cathedral.",
+        coordinates: { lat: 47.0222, lng: 28.8305 },
+      },
     ],
   },
   {
@@ -203,10 +351,26 @@ export const itinerary = [
     travelNote: "Day trip from Chișinău",
     imageUrl: "https://picsum.photos/seed/cave-monastery-cliff/1920/1080",
     activities: [
-      "Cave monastery carved into cliffs",
-      "Traditional Moldovan village",
-      "Scenic views over the Răut river",
-      "Optional: Cricova wine cellar",
+      {
+        title: "Cave monastery carved into cliffs",
+        description: "The Cave Monastery of Orheiul Vechi is carved directly into a dramatic limestone promontory that loops above the Răut River. Monks have inhabited these cave cells since the 13th century, and a small community still lives here today. The approach along the cliff edge with the river snaking far below is one of the most striking landscapes in Moldova — serene, timeless and almost completely untouched by tourism.",
+        coordinates: { lat: 47.5378, lng: 28.9806 },
+      },
+      {
+        title: "Traditional Moldovan village",
+        description: "The village of Butuceni clings to the cliffs beside the monastery and has barely changed in a century. Its stone-walled cottages, kitchen gardens and grape-draped courtyards offer an authentic glimpse of rural Moldovan life. Several families offer home-cooked meals featuring local specialities — plăcinte (pastries), zeamă (chicken noodle soup) and wine pressed from their own vineyards.",
+        coordinates: { lat: 47.5360, lng: 28.9820 },
+      },
+      {
+        title: "Scenic views over the Răut river",
+        description: "The meander of the Răut river around the Orheiul Vechi promontory is one of Moldova's most photographed landscapes. From the clifftop you can trace the entire bend of the river, the patchwork of orchards and sunflower fields beyond, and — on clear days — a vast sweep of the Moldavian plateau. Sunrise and golden-hour light here are exceptional.",
+        coordinates: { lat: 47.5378, lng: 28.9806 },
+      },
+      {
+        title: "Optional: Cricova wine cellar",
+        description: "On the way back to Chișinău, a detour to Cricova is highly recommended. Beneath the town lies 120 km of limestone-walled wine tunnels, maintained at a constant 12 °C and stocked with an estimated 30 million bottles. Cricova is famous for its sparkling wines, but also holds one of the world's great wine collections — including John Kerry's collection and Hermann Göring's confiscated cellar. Tours include a tasting.",
+        coordinates: { lat: 47.1343, lng: 28.8574 },
+      },
     ],
   },
   {
@@ -220,9 +384,21 @@ export const itinerary = [
     travelNote: null,
     imageUrl: "https://picsum.photos/seed/moldova-park-wine/1920/1080",
     activities: [
-      "Valea Morilor Park",
-      "Central Market",
-      "Try Moldovan wine and food",
+      {
+        title: "Valea Morilor Park",
+        description: "Valea Morilor (Valley of the Mills) is Chișinău's most beloved green space — a romantic park centred on a large artificial lake surrounded by weeping willows, rose gardens and shaded promenades. Pedal-boats drift across the water, local families picnic on the banks, and the gentle pace makes it the perfect place to spend a slow final morning. The park also has open-air cafés and a small outdoor amphitheatre.",
+        coordinates: { lat: 47.0148, lng: 28.8354 },
+      },
+      {
+        title: "Central Market",
+        description: "The Central Market of Chișinău (Piața Centrală) is a sprawling, wonderfully chaotic bazaar that fills an entire city block. Vendors sell everything from sun-ripened tomatoes, cherries and local honey to hand-embroidered textiles, Soviet-era memorabilia and bootleg CDs. It is one of the most authentic market experiences in the region — come early, bargain freely, and try the smoked cheeses and cured meats.",
+        coordinates: { lat: 47.0187, lng: 28.8295 },
+      },
+      {
+        title: "Try Moldovan wine and food",
+        description: "Moldova is one of the world's most wine-dense countries by area, and the final evening calls for a proper send-off. Head to one of Chișinău's wine bars or traditional crama (wine cellar restaurants) to try Feteasca Neagră, the native red grape, alongside a spread of mămăligă (cornmeal porridge), stuffed peppers, grilled meats and local cheeses. Toast the end of an extraordinary journey.",
+        coordinates: { lat: 47.0105, lng: 28.8638 },
+      },
     ],
   },
 ];
