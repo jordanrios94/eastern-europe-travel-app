@@ -120,6 +120,47 @@
   color: #111827;
 }
 
+/* ── Tab bar ─────────────────────────────────────────────────── */
+.dm-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.dm-tab {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #6b7280;
+  border-bottom: 2.5px solid transparent;
+  transition: color 0.18s, border-color 0.18s, background 0.18s;
+  white-space: nowrap;
+}
+
+.dm-tab:hover {
+  color: #111827;
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.dm-tab--active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.dm-tab-icon {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
 /* ── Body ───────────────────────────────────────────────────── */
 .dm-body {
   flex: 1;

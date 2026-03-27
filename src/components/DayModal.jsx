@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import TikTokGrid from './TikTokGrid';
 import './DayModal.css';
 
 // Custom activity marker icon
@@ -31,6 +32,7 @@ function FlyToActivity({ activity }) {
 
 function DayModal({ day, onClose }) {
   const [activeIdx, setActiveIdx]   = useState(null);
+  const [activeTab, setActiveTab]   = useState('details');
   const markerRefs                  = useRef([]);
   const accordionRef                = useRef(null);
 
@@ -98,81 +100,113 @@ function DayModal({ day, onClose }) {
           </button>
         </header>
 
-        {/* ── Modal body: accordion + map ─────────────────────── */}
+        {/* ── Tab bar ────────────────────────────────────────── */}
+        <div className="dm-tabs" style={{ '--accent': day.countryColor }}>
+          <button
+            className={`dm-tab${activeTab === 'details' ? ' dm-tab--active' : ''}`}
+            onClick={() => setActiveTab('details')}
+            aria-selected={activeTab === 'details'}
+            role="tab"
+          >
+            <span className="dm-tab-icon" aria-hidden="true">🗺</span>
+            Details &amp; Map
+          </button>
+          <button
+            className={`dm-tab${activeTab === 'tiktok' ? ' dm-tab--active' : ''}`}
+            onClick={() => setActiveTab('tiktok')}
+            aria-selected={activeTab === 'tiktok'}
+            role="tab"
+          >
+            <span className="dm-tab-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.87a8.18 8.18 0 0 0 4.77 1.52V7.03a4.85 4.85 0 0 1-1-.34Z"/>
+              </svg>
+            </span>
+            TikTok
+          </button>
+        </div>
+
+        {/* ── Modal body ──────────────────────────────────────── */}
         <div className="dm-body">
-          {/* Left: accordion */}
-          <div className="dm-accordion-col" ref={accordionRef}>
-            <p className="dm-accordion-label">Activities</p>
-            <ul className="dm-accordion-list" role="list">
-              {day.activities.map((act, i) => {
-                const isOpen = activeIdx === i;
-                return (
-                  <li key={i} className={`dm-accordion-item${isOpen ? ' dm-accordion-item--open' : ''}`}>
-                    <button
-                      className="dm-accordion-trigger"
-                      style={{ '--accent': day.countryColor }}
-                      onClick={() => handleAccordionToggle(i)}
-                      aria-expanded={isOpen}
-                    >
-                      <span
-                        className="dm-accordion-num"
-                        style={{ background: day.countryColor }}
-                      >
-                        {i + 1}
-                      </span>
-                      <span className="dm-accordion-title">{act.title}</span>
-                      <span className="dm-accordion-chevron" aria-hidden="true">
-                        ›
-                      </span>
-                    </button>
-                    <div
-                      className="dm-accordion-body"
-                      hidden={!isOpen}
-                    >
-                      <p className="dm-accordion-desc">{act.description}</p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+          {activeTab === 'details' ? (
+            <>
+              {/* Left: accordion */}
+              <div className="dm-accordion-col" ref={accordionRef}>
+                <p className="dm-accordion-label">Activities</p>
+                <ul className="dm-accordion-list" role="list">
+                  {day.activities.map((act, i) => {
+                    const isOpen = activeIdx === i;
+                    return (
+                      <li key={i} className={`dm-accordion-item${isOpen ? ' dm-accordion-item--open' : ''}`}>
+                        <button
+                          className="dm-accordion-trigger"
+                          style={{ '--accent': day.countryColor }}
+                          onClick={() => handleAccordionToggle(i)}
+                          aria-expanded={isOpen}
+                        >
+                          <span
+                            className="dm-accordion-num"
+                            style={{ background: day.countryColor }}
+                          >
+                            {i + 1}
+                          </span>
+                          <span className="dm-accordion-title">{act.title}</span>
+                          <span className="dm-accordion-chevron" aria-hidden="true">
+                            ›
+                          </span>
+                        </button>
+                        <div
+                          className="dm-accordion-body"
+                          hidden={!isOpen}
+                        >
+                          <p className="dm-accordion-desc">{act.description}</p>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
 
-          {/* Right: city map */}
-          <div className="dm-map-col">
-            <MapContainer
-              center={center}
-              zoom={13}
-              scrollWheelZoom
-              className="dm-leaflet-map"
-              aria-label={`Map of ${day.city}`}
-            >
-              <TileLayer
-                url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-                attribution='&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
-                maxZoom={19}
-              />
-
-              <FlyToActivity activity={activeActivity} />
-
-              {day.activities.map((act, i) => (
-                <Marker
-                  key={i}
-                  position={[act.coordinates.lat, act.coordinates.lng]}
-                  icon={makeActivityIcon(day.countryColor, activeIdx === i)}
-                  ref={(el) => (markerRefs.current[i] = el)}
-                  eventHandlers={{ click: () => handleAccordionToggle(i) }}
+              {/* Right: city map */}
+              <div className="dm-map-col">
+                <MapContainer
+                  center={center}
+                  zoom={13}
+                  scrollWheelZoom
+                  className="dm-leaflet-map"
+                  aria-label={`Map of ${day.city}`}
                 >
-                  <Popup className="dm-map-popup">
-                    <div className="dm-popup-inner">
-                      <p className="dm-popup-title" style={{ color: day.countryColor }}>
-                        {act.title}
-                      </p>
-                    </div>
-                  </Popup>
-                </Marker>
-              ))}
-            </MapContainer>
-          </div>
+                  <TileLayer
+                    url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+                    attribution='&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
+                    maxZoom={19}
+                  />
+
+                  <FlyToActivity activity={activeActivity} />
+
+                  {day.activities.map((act, i) => (
+                    <Marker
+                      key={i}
+                      position={[act.coordinates.lat, act.coordinates.lng]}
+                      icon={makeActivityIcon(day.countryColor, activeIdx === i)}
+                      ref={(el) => (markerRefs.current[i] = el)}
+                      eventHandlers={{ click: () => handleAccordionToggle(i) }}
+                    >
+                      <Popup className="dm-map-popup">
+                        <div className="dm-popup-inner">
+                          <p className="dm-popup-title" style={{ color: day.countryColor }}>
+                            {act.title}
+                          </p>
+                        </div>
+                      </Popup>
+                    </Marker>
+                  ))}
+                </MapContainer>
+              </div>
+            </>
+          ) : (
+            <TikTokGrid day={day} />
+          )}
         </div>
       </div>
     </div>
