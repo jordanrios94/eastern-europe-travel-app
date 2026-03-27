@@ -1,0 +1,180 @@
+.calendar {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+}
+
+.calendar-header {
+  margin-bottom: 1.25rem;
+}
+
+.calendar-month {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  padding-bottom: 0.5rem;
+}
+
+/* ── Base cell ─────────────────────────────────────────────── */
+.calendar-cell {
+  position: relative;
+  border-radius: 10px;
+  padding: 0.5rem 0.4rem 0.4rem;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.15s, box-shadow 0.15s;
+  outline: none;
+}
+
+.calendar-cell.blank {
+  background: transparent;
+}
+
+/* ── Non-trip day ───────────────────────────────────────────── */
+.calendar-cell.non-trip-day {
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  color: #9ca3af;
+}
+
+/* ── Trip day ───────────────────────────────────────────────── */
+.calendar-cell.trip-day {
+  background: color-mix(in srgb, var(--country-color) 12%, #ffffff);
+  border: 2px solid color-mix(in srgb, var(--country-color) 40%, #ffffff);
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.calendar-cell.trip-day:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--country-color) 25%, transparent);
+}
+
+.calendar-cell.trip-day:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--country-color) 50%, transparent);
+}
+
+/* ── Selected state ─────────────────────────────────────────── */
+.calendar-cell.selected {
+  background: color-mix(in srgb, var(--country-color) 22%, #ffffff);
+  border-color: var(--country-color);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--country-color) 30%, transparent);
+  transform: translateY(-2px);
+}
+
+/* ── Cell internals ─────────────────────────────────────────── */
+.cell-day-number {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.cell-trip-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+}
+
+.cell-flag {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.cell-city {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.cell-travel-badge {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 1px;
+}
+
+/* ── Legend ─────────────────────────────────────────────────── */
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.legend-plane {
+  font-size: 0.9rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .calendar {
+    padding: 1rem 0.75rem;
+  }
+
+  .calendar-cell {
+    min-height: 56px;
+    padding: 0.35rem 0.25rem;
+  }
+
+  .cell-day-number {
+    font-size: 0.75rem;
+  }
+
+  .cell-flag {
+    font-size: 0.9rem;
+  }
+
+  .cell-city {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .calendar-cell {
+    min-height: 46px;
+  }
+
+  .cell-city {
+    display: none;
+  }
+}
