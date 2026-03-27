@@ -1,0 +1,317 @@
+/* ════════════════════════════════════════════════════════════
+   Timeline – full-page parallax scroll timeline
+   ════════════════════════════════════════════════════════════ */
+
+.timeline {
+  position: relative;
+}
+
+/* ── Section (one per day) ─────────────────────────────────── */
+.tl-section {
+  position: relative;
+  height: 100vh;
+  min-height: 560px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Parallax background photo ─────────────────────────────── */
+.tl-bg {
+  position: absolute;
+  inset: -30% 0;       /* extend beyond bounds so parallax has room */
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+/* ── Dark gradient overlay ─────────────────────────────────── */
+.tl-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(5, 10, 28, 0.78) 0%,
+    rgba(5, 10, 28, 0.40) 50%,
+    rgba(5, 10, 28, 0.78) 100%
+  );
+}
+
+/* right-side cards flip the gradient */
+.tl-section:has(.tl-card--right) .tl-overlay {
+  background: linear-gradient(
+    to left,
+    rgba(5, 10, 28, 0.78) 0%,
+    rgba(5, 10, 28, 0.40) 50%,
+    rgba(5, 10, 28, 0.78) 100%
+  );
+}
+
+/* ── Vertical spine ────────────────────────────────────────── */
+.tl-spine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.18);
+  z-index: 2;
+}
+
+/* ── Timeline dot ──────────────────────────────────────────── */
+.tl-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+/* ── Card base ─────────────────────────────────────────────── */
+.tl-card {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  z-index: 4;
+
+  /* fade-in from left/right – overridden when .tl-card--visible */
+  opacity: 0;
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.tl-card--left {
+  left: 4%;
+  transform: translateY(-50%) translateX(-32px);
+}
+
+.tl-card--right {
+  right: 4%;
+  transform: translateY(-50%) translateX(32px);
+}
+
+/* Visible state (added by IntersectionObserver) */
+.tl-card--visible.tl-card--left {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.tl-card--visible.tl-card--right {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ── Accent bar ────────────────────────────────────────────── */
+.tl-card-bar {
+  height: 5px;
+  background: var(--accent);
+}
+
+/* ── Card inner padding ────────────────────────────────────── */
+.tl-card-inner {
+  padding: 1.4rem 1.6rem 1.6rem;
+}
+
+/* ── Meta row (day badge + date) ───────────────────────────── */
+.tl-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.tl-day-badge {
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.25rem 0.7rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.tl-date {
+  font-size: 0.78rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+/* ── City heading ──────────────────────────────────────────── */
+.tl-city {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+}
+
+.tl-flag {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.tl-country {
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Travel note ───────────────────────────────────────────── */
+.tl-travel-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: #fffbeb;
+  border-left: 3px solid #f59e0b;
+  border-radius: 4px;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.82rem;
+  color: #92400e;
+  margin-bottom: 0.9rem;
+  line-height: 1.4;
+}
+
+.tl-travel-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Activities ────────────────────────────────────────────── */
+.tl-activities {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tl-activity {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: #374151;
+  line-height: 1.4;
+}
+
+.tl-pip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* ── End marker ────────────────────────────────────────────── */
+.tl-end {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem 4rem;
+  background: #0a0d1a;
+}
+
+.tl-end-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 4px solid #6b7280;
+  margin-bottom: 1rem;
+}
+
+.tl-end-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ════════════════════════════════════════════════════════════
+   Responsive
+   ════════════════════════════════════════════════════════════ */
+
+/* Tablet: narrower cards */
+@media (max-width: 900px) {
+  .tl-card {
+    width: 52%;
+  }
+}
+
+/* Mobile: hide spine, center cards full-width */
+@media (max-width: 680px) {
+  .tl-section {
+    height: auto;
+    min-height: 100svh;
+    align-items: flex-end;
+    padding-bottom: 0;
+  }
+
+  .tl-bg {
+    inset: -20% 0;
+  }
+
+  .tl-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(5, 10, 28, 0.92) 0%,
+      rgba(5, 10, 28, 0.55) 50%,
+      rgba(5, 10, 28, 0.25) 100%
+    ) !important;
+  }
+
+  .tl-spine,
+  .tl-dot {
+    display: none;
+  }
+
+  .tl-card,
+  .tl-card--left,
+  .tl-card--right {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
+    transform: none !important;
+    opacity: 0;
+    margin-top: auto;
+    transition: opacity 0.65s ease;
+  }
+
+  .tl-card--visible.tl-card--left,
+  .tl-card--visible.tl-card--right {
+    opacity: 1;
+    transform: none !important;
+  }
+
+  .tl-city {
+    font-size: 1.4rem;
+  }
+
+  .tl-card-inner {
+    padding: 1.1rem 1.25rem 1.4rem;
+  }
+}

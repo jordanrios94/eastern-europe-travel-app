@@ -8,6 +8,7 @@ export const itinerary = [
     countryColor: "#00966E",
     isTravelDay: false,
     travelNote: null,
+    imageUrl: "https://picsum.photos/seed/sofia-cathedral/1920/1080",
     activities: [
       "Alexander Nevsky Cathedral",
       "Roman ruins of Serdica",
@@ -24,6 +25,7 @@ export const itinerary = [
     countryColor: "#00966E",
     isTravelDay: false,
     travelNote: "Day trip from Sofia",
+    imageUrl: "https://picsum.photos/seed/rila-forest-lake/1920/1080",
     activities: [
       "Visit the UNESCO-listed Rila Monastery",
       "Optional hike to the Seven Rila Lakes",
@@ -38,6 +40,7 @@ export const itinerary = [
     countryColor: "#00966E",
     isTravelDay: true,
     travelNote: "Travel from Sofia to Plovdiv (~2 hours)",
+    imageUrl: "https://picsum.photos/seed/plovdiv-oldtown/1920/1080",
     activities: [
       "Roman Theatre",
       "Old Town with colorful houses",
@@ -53,6 +56,7 @@ export const itinerary = [
     countryColor: "#002B7F",
     isTravelDay: true,
     travelNote: "Morning in Plovdiv, then travel to Bucharest, Romania",
+    imageUrl: "https://picsum.photos/seed/bucharest-arrive/1920/1080",
     activities: [
       "Arrive and check in",
       "Evening walk along Calea Victoriei boulevard",
@@ -68,6 +72,7 @@ export const itinerary = [
     countryColor: "#002B7F",
     isTravelDay: false,
     travelNote: null,
+    imageUrl: "https://picsum.photos/seed/bucharest-parliament/1920/1080",
     activities: [
       "Palace of Parliament (world's heaviest building)",
       "Revolution Square and Memorial of Rebirth",
@@ -84,6 +89,7 @@ export const itinerary = [
     countryColor: "#002B7F",
     isTravelDay: true,
     travelNote: "Travel from Bucharest to Brașov (~2.5 hours)",
+    imageUrl: "https://picsum.photos/seed/brasov-mountains/1920/1080",
     activities: [
       "Council Square and city centre",
       "Black Church (Gothic landmark)",
@@ -99,6 +105,7 @@ export const itinerary = [
     countryColor: "#002B7F",
     isTravelDay: false,
     travelNote: null,
+    imageUrl: "https://picsum.photos/seed/bran-castle-forest/1920/1080",
     activities: [
       "Day trip to Bran Castle (Dracula's Castle)",
       "Seven Ladders Canyon hike",
@@ -113,6 +120,7 @@ export const itinerary = [
     countryColor: "#002B7F",
     isTravelDay: false,
     travelNote: null,
+    imageUrl: "https://picsum.photos/seed/carpathian-national-park/1920/1080",
     activities: [
       "Piatra Craiului National Park",
       "Explore Brașov medieval streets and walls",
@@ -128,6 +136,7 @@ export const itinerary = [
     countryColor: "#002B7F",
     isTravelDay: true,
     travelNote: "Travel from Brașov to Sibiu",
+    imageUrl: "https://picsum.photos/seed/sibiu-medieval-square/1920/1080",
     activities: [
       "Large Square",
       "Bridge of Lies",
@@ -143,6 +152,7 @@ export const itinerary = [
     countryColor: "#002B7F",
     isTravelDay: true,
     travelNote: "Travel from Sibiu to Iași (eastern Romania)",
+    imageUrl: "https://picsum.photos/seed/iasi-culture-palace/1920/1080",
     activities: [
       "Palace of Culture",
       "Metropolitan Cathedral",
@@ -158,6 +168,7 @@ export const itinerary = [
     countryColor: "#005BBB",
     isTravelDay: true,
     travelNote: "Travel from Iași to Odesa, Ukraine",
+    imageUrl: "https://picsum.photos/seed/odesa-black-sea/1920/1080",
     activities: [
       "Odessa Opera House",
       "Potemkin Stairs",
@@ -174,6 +185,7 @@ export const itinerary = [
     countryColor: "#003DA5",
     isTravelDay: true,
     travelNote: "Travel from Odesa to Chișinău, Moldova",
+    imageUrl: "https://picsum.photos/seed/chisinau-boulevard/1920/1080",
     activities: [
       "Stefan cel Mare Boulevard",
       "Nativity Cathedral",
@@ -189,6 +201,7 @@ export const itinerary = [
     countryColor: "#003DA5",
     isTravelDay: false,
     travelNote: "Day trip from Chișinău",
+    imageUrl: "https://picsum.photos/seed/cave-monastery-cliff/1920/1080",
     activities: [
       "Cave monastery carved into cliffs",
       "Traditional Moldovan village",
@@ -205,6 +218,7 @@ export const itinerary = [
     countryColor: "#003DA5",
     isTravelDay: false,
     travelNote: null,
+    imageUrl: "https://picsum.photos/seed/moldova-park-wine/1920/1080",
     activities: [
       "Valea Morilor Park",
       "Central Market",
