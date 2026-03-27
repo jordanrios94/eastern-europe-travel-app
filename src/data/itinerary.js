@@ -228,12 +228,12 @@ export const itinerary = [
 ];
 
 export const routeStops = [
-  { city: "Sofia", country: "Bulgaria", flag: "🇧🇬", countryColor: "#00966E" },
-  { city: "Plovdiv", country: "Bulgaria", flag: "🇧🇬", countryColor: "#00966E" },
-  { city: "Bucharest", country: "Romania", flag: "🇷🇴", countryColor: "#002B7F" },
-  { city: "Brașov", country: "Romania", flag: "🇷🇴", countryColor: "#002B7F" },
-  { city: "Sibiu", country: "Romania", flag: "🇷🇴", countryColor: "#002B7F" },
-  { city: "Iași", country: "Romania", flag: "🇷🇴", countryColor: "#002B7F" },
-  { city: "Odesa", country: "Ukraine", flag: "🇺🇦", countryColor: "#005BBB" },
-  { city: "Chișinău", country: "Moldova", flag: "🇲🇩", countryColor: "#003DA5" },
+  { city: "Sofia",     country: "Bulgaria", flag: "🇧🇬", countryColor: "#00966E", lat: 42.6977, lng: 23.3219, description: "Bulgaria's capital — cathedrals, Roman ruins and mountain views." },
+  { city: "Plovdiv",   country: "Bulgaria", flag: "🇧🇬", countryColor: "#00966E", lat: 42.1354, lng: 24.7453, description: "Europe's oldest city — Roman theatre, colourful Old Town and street art." },
+  { city: "Bucharest", country: "Romania",  flag: "🇷🇴", countryColor: "#002B7F", lat: 44.4268, lng: 26.1025, description: "Romania's vibrant capital — grand boulevards, palaces and lively nightlife." },
+  { city: "Brașov",    country: "Romania",  flag: "🇷🇴", countryColor: "#002B7F", lat: 45.6427, lng: 25.5887, description: "A medieval gem in the Carpathians — Dracula's castle and mountain hikes." },
+  { city: "Sibiu",     country: "Romania",  flag: "🇷🇴", countryColor: "#002B7F", lat: 45.7983, lng: 24.1256, description: "Charming Saxon city with watchful-eye windows and a famous old bridge." },
+  { city: "Iași",      country: "Romania",  flag: "🇷🇴", countryColor: "#002B7F", lat: 47.1585, lng: 27.6014, description: "Romania's cultural capital — grand Palace of Culture and cathedral spires." },
+  { city: "Odesa",     country: "Ukraine",  flag: "🇺🇦", countryColor: "#005BBB", lat: 46.4825, lng: 30.7233, description: "Black Sea port city — grand opera house and the famous Potemkin Stairs." },
+  { city: "Chișinău",  country: "Moldova",  flag: "🇲🇩", countryColor: "#003DA5", lat: 47.0105, lng: 28.8638, description: "Moldova's leafy capital — wide boulevards, wine culture and hidden gems." },
 ];
