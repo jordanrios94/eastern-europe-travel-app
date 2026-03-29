@@ -1,9 +1,9 @@
 /* ════════════════════════════════════════════════════════════
-   TikTokGrid – video search results inside DayModal
+   InstagramGrid – hashtag post search results inside DayModal
    ════════════════════════════════════════════════════════════ */
 
 /* ── Wrapper ────────────────────────────────────────────────── */
-.ttg-wrapper {
+.igg-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -11,7 +11,7 @@
 }
 
 /* ── Hashtag chips bar ──────────────────────────────────────── */
-.ttg-tags-bar {
+.igg-tags-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
@@ -20,7 +20,7 @@
   flex-shrink: 0;
 }
 
-.ttg-tag {
+.igg-tag {
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--accent);
@@ -32,12 +32,12 @@
 }
 
 /* ── Grid ───────────────────────────────────────────────────── */
-.ttg-grid {
+.igg-grid {
   flex: 1;
   overflow-y: auto;
   padding: 1.1rem 1.2rem;
   display: grid;
-  /* 3 portrait columns on desktop */
+  /* 3 columns on desktop */
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   align-content: start;
@@ -45,11 +45,11 @@
   scrollbar-color: rgba(0, 0, 0, 0.12) transparent;
 }
 
-.ttg-grid::-webkit-scrollbar       { width: 4px; }
-.ttg-grid::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 2px; }
+.igg-grid::-webkit-scrollbar       { width: 4px; }
+.igg-grid::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 2px; }
 
 /* ── Card ───────────────────────────────────────────────────── */
-.ttg-card {
+.igg-card {
   display: flex;
   flex-direction: column;
   border-radius: 12px;
@@ -61,21 +61,21 @@
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.ttg-card:hover {
+.igg-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Thumbnail ──────────────────────────────────────────────── */
-.ttg-thumb-wrap {
+.igg-thumb-wrap {
   position: relative;
-  /* TikTok portrait ratio 9:16 */
-  aspect-ratio: 9 / 16;
+  /* Square aspect ratio – classic Instagram format */
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #e5e7eb;
 }
 
-.ttg-thumb {
+.igg-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -83,56 +83,37 @@
   transition: transform 0.3s ease;
 }
 
-.ttg-card:hover .ttg-thumb {
+.igg-card:hover .igg-thumb {
   transform: scale(1.04);
 }
 
-.ttg-thumb--placeholder {
+.igg-thumb--placeholder {
   background: linear-gradient(135deg, #e5e7eb 25%, #d1d5db 100%);
 }
 
-.ttg-play-icon {
+.igg-type-badge {
   position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
-  opacity: 0;
-  transition: opacity 0.18s ease;
-  pointer-events: none;
-}
-
-.ttg-card:hover .ttg-play-icon {
-  opacity: 1;
-}
-
-.ttg-view-badge {
-  position: absolute;
-  bottom: 0.4rem;
-  left: 0.4rem;
+  top: 0.4rem;
+  right: 0.4rem;
   background: rgba(0, 0, 0, 0.55);
   color: #fff;
-  font-size: 0.62rem;
-  font-weight: 600;
+  font-size: 0.7rem;
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
   backdrop-filter: blur(4px);
 }
 
 /* ── Card body ──────────────────────────────────────────────── */
-.ttg-card-body {
+.igg-card-body {
   padding: 0.6rem 0.75rem 0.75rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
 
-.ttg-video-title {
+.igg-caption {
   font-size: 0.76rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #111827;
   line-height: 1.35;
   display: -webkit-box;
@@ -141,31 +122,8 @@
   overflow: hidden;
 }
 
-.ttg-card-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.4rem;
-}
-
-.ttg-author {
-  font-size: 0.68rem;
-  color: #6b7280;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ttg-likes {
-  font-size: 0.68rem;
-  color: #ef4444;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-
 /* ── State views (loading / error / empty) ──────────────────── */
-.ttg-state {
+.igg-state {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -176,46 +134,46 @@
   text-align: center;
 }
 
-.ttg-state--error {
+.igg-state--error {
   color: #991b1b;
 }
 
-.ttg-state-text {
+.igg-state-text {
   font-size: 0.9rem;
   font-weight: 500;
   color: inherit;
   max-width: 420px;
 }
 
-.ttg-state-hint {
+.igg-state-hint {
   font-size: 0.78rem;
   color: #6b7280;
   max-width: 420px;
   line-height: 1.55;
 }
 
-.ttg-state-hint code {
+.igg-state-hint code {
   background: rgba(0, 0, 0, 0.07);
   padding: 0.1em 0.35em;
   border-radius: 3px;
   font-size: 0.9em;
 }
 
-.ttg-error-icon {
+.igg-error-icon {
   font-size: 2rem;
 }
 
 /* ── Spinner ────────────────────────────────────────────────── */
-.ttg-spinner {
+.igg-spinner {
   width: 36px;
   height: 36px;
   border: 3px solid rgba(0, 0, 0, 0.08);
   border-top-color: #111827;
   border-radius: 50%;
-  animation: ttg-spin 0.7s linear infinite;
+  animation: igg-spin 0.7s linear infinite;
 }
 
-@keyframes ttg-spin {
+@keyframes igg-spin {
   to { transform: rotate(360deg); }
 }
 
@@ -224,20 +182,20 @@
    ════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1100px) {
-  .ttg-grid {
+  .igg-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
   }
 }
 
 @media (max-width: 780px) {
-  .ttg-grid {
+  .igg-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
-  .ttg-grid {
+  .igg-grid {
     grid-template-columns: repeat(2, 1fr);
     padding: 0.75rem;
     gap: 0.6rem;

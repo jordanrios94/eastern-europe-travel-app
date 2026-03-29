@@ -5,15 +5,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/tiktok-token': {
-        target: 'https://open.tiktokapis.com',
+      '/instagram-api': {
+        target: 'https://graph.facebook.com',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/tiktok-token/, '/v2/oauth/token'),
-      },
-      '/tiktok-videos': {
-        target: 'https://open.tiktokapis.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/tiktok-videos/, '/v2/research/video/query'),
+        rewrite: (path) => path.replace(/^\/instagram-api/, '/v22.0'),
       },
     },
   },
