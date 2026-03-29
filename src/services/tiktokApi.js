@@ -30,7 +30,15 @@ export async function getTikTokAccessToken() {
 
   if (!res.ok) throw new Error(`Token request failed: ${res.status}`);
   const data = await res.json();
-  return data.access_token;
+  const token = data.access_token;
+  if (!token) {
+    throw new Error(
+      `Token request succeeded but no access_token was returned. ` +
+      `Check that your VITE_TIKTOK_CLIENT_KEY and VITE_TIKTOK_CLIENT_SECRET are correct ` +
+      `and that your app has Research API access. TikTok response: ${JSON.stringify(data)}`
+    );
+  }
+  return token;
 }
 
 /**
