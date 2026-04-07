@@ -47,8 +47,8 @@
   overflow-y: auto;
   padding: 1.1rem 1.2rem;
   display: grid;
-  /* 2 portrait columns on desktop — keeps cards tall enough for comfortable video playback */
-  grid-template-columns: repeat(2, 1fr);
+  /* 3 portrait columns on desktop */
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   align-content: start;
   scrollbar-width: thin;
@@ -59,7 +59,11 @@
 .ytg-grid::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 2px; }
 
 /* ── Card ───────────────────────────────────────────────────── */
+/* aspect-ratio: 9/16 enforces portrait height in CSS Grid — the inline size
+   (column track) is definite, so the block size resolves correctly even
+   when all children are position:absolute. */
 .ytg-card {
+  aspect-ratio: 9 / 16;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
@@ -67,14 +71,6 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08), 0 4px 14px rgba(0, 0, 0, 0.06);
   color: inherit;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-
-/* Enforce 9:16 portrait ratio via padding-top so the grid row gets a real height.
-   aspect-ratio alone is unreliable when all children are position:absolute. */
-.ytg-card::before {
-  content: '';
-  display: block;
-  padding-top: calc(16 / 9 * 100%);
 }
 
 /* Button-reset so the click-to-play wrapper fills the card */
@@ -289,7 +285,7 @@
 
 @media (max-width: 1100px) {
   .ytg-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
   }
 }
