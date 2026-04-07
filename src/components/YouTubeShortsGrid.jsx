@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { searchYouTubeShorts } from '../services/youtubeApi';
 import { YT_API_KEY } from '../constants/youtube';
 import './YouTubeShortsGrid.css';
@@ -31,9 +31,18 @@ function getThumbnail(snippet) {
 const STATUS = { IDLE: 'idle', LOADING: 'loading', ERROR: 'error', DONE: 'done' };
 
 export default function YouTubeShortsGrid({ day }) {
-  const [status,   setStatus]   = useState(STATUS.IDLE);
-  const [videos,   setVideos]   = useState([]);
-  const [errorMsg, setErrorMsg] = useState('');
+  const [status,      setStatus]      = useState(STATUS.IDLE);
+  const [videos,      setVideos]      = useState([]);
+  const [errorMsg,    setErrorMsg]    = useState('');
+  const [activeVideo, setActiveVideo] = useState(null);
+  const gridRef = useRef(null);
+
+  // Close active player on Escape
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') setActiveVideo(null); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
   useEffect(() => {
     if (!YT_API_KEY) {
@@ -110,39 +119,58 @@ export default function YouTubeShortsGrid({ day }) {
       </div>
 
       {/* Shorts grid */}
-      <div className="ytg-grid">
+      <div className="ytg-grid" ref={gridRef}>
         {videos.map((item) => {
-          const videoId = item.id?.videoId;
-          const snippet = item.snippet ?? {};
-          const thumb   = getThumbnail(snippet);
+          const videoId  = item.id?.videoId;
+          const snippet  = item.snippet ?? {};
+          const thumb    = getThumbnail(snippet);
+          const isActive = activeVideo === videoId;
 
           return (
-            <a
-              key={videoId}
-              className="ytg-card"
-              href={`https://www.youtube.com/shorts/${videoId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Watch YouTube Short: ${snippet.title || 'video'}`}
-            >
-              {/* Thumbnail */}
-              <div className="ytg-thumb-wrap">
-                {thumb
-                  ? <img className="ytg-thumb" src={thumb} alt="" loading="lazy" />
-                  : <div className="ytg-thumb ytg-thumb--placeholder" />
-                }
-                <span className="ytg-play-icon" aria-hidden="true">▶</span>
-                <span className="ytg-shorts-badge" aria-hidden="true">Shorts</span>
-              </div>
+            <div key={videoId} className={`ytg-card${isActive ? ' ytg-card--active' : ''}`}>
+              {isActive ? (
+                /* ── Inline player ── */
+                <div className="ytg-player-wrap">
+                  <iframe
+                    className="ytg-player"
+                    src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+                    title={snippet.title || 'YouTube Short'}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                  <button
+                    className="ytg-close-btn"
+                    onClick={() => setActiveVideo(null)}
+                    aria-label="Close player"
+                  >
+                    ✕
+                  </button>
+                </div>
+              ) : (
+                /* ── Thumbnail / click-to-play ── */
+                <button
+                  className="ytg-card-btn"
+                  onClick={() => setActiveVideo(videoId)}
+                  aria-label={`Play YouTube Short: ${snippet.title || 'video'}`}
+                >
+                  <div className="ytg-thumb-wrap">
+                    {thumb
+                      ? <img className="ytg-thumb" src={thumb} alt="" loading="lazy" />
+                      : <div className="ytg-thumb ytg-thumb--placeholder" />
+                    }
+                    <span className="ytg-play-icon" aria-hidden="true">▶</span>
+                    <span className="ytg-shorts-badge" aria-hidden="true">Shorts</span>
+                  </div>
 
-              {/* Card body */}
-              <div className="ytg-card-body">
-                <p className="ytg-video-title">{snippet.title || '—'}</p>
-                {snippet.channelTitle && (
-                  <p className="ytg-channel">{snippet.channelTitle}</p>
-                )}
-              </div>
-            </a>
+                  <div className="ytg-card-body">
+                    <p className="ytg-video-title">{snippet.title || '—'}</p>
+                    {snippet.channelTitle && (
+                      <p className="ytg-channel">{snippet.channelTitle}</p>
+                    )}
+                  </div>
+                </button>
+              )}
+            </div>
           );
         })}
       </div>
