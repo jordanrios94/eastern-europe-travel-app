@@ -1,26 +1,33 @@
 /* ════════════════════════════════════════════════════════════
-   InstagramGrid – hashtag post search results inside DayModal
+   YouTubeShortsGrid – short video search results inside DayModal
    ════════════════════════════════════════════════════════════ */
 
 /* ── Wrapper ────────────────────────────────────────────────── */
-.igg-wrapper {
+.ytg-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
 }
 
-/* ── Hashtag chips bar ──────────────────────────────────────── */
-.igg-tags-bar {
+/* ── Search query pill ──────────────────────────────────────── */
+.ytg-query-bar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.85rem 1.2rem 0.65rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   flex-shrink: 0;
 }
 
-.igg-tag {
+.ytg-query-label {
+  font-size: 0.7rem;
+  color: #6b7280;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.ytg-query-pill {
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--accent);
@@ -29,15 +36,17 @@
   border-radius: 50px;
   padding: 0.2rem 0.65rem;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ── Grid ───────────────────────────────────────────────────── */
-.igg-grid {
+.ytg-grid {
   flex: 1;
   overflow-y: auto;
   padding: 1.1rem 1.2rem;
   display: grid;
-  /* 3 columns on desktop */
+  /* 3 portrait columns on desktop */
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   align-content: start;
@@ -45,11 +54,11 @@
   scrollbar-color: rgba(0, 0, 0, 0.12) transparent;
 }
 
-.igg-grid::-webkit-scrollbar       { width: 4px; }
-.igg-grid::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 2px; }
+.ytg-grid::-webkit-scrollbar       { width: 4px; }
+.ytg-grid::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 2px; }
 
 /* ── Card ───────────────────────────────────────────────────── */
-.igg-card {
+.ytg-card {
   display: flex;
   flex-direction: column;
   border-radius: 12px;
@@ -61,21 +70,21 @@
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
-.igg-card:hover {
+.ytg-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Thumbnail ──────────────────────────────────────────────── */
-.igg-thumb-wrap {
+.ytg-thumb-wrap {
   position: relative;
-  /* Square aspect ratio – classic Instagram format */
-  aspect-ratio: 1 / 1;
+  /* Shorts portrait ratio 9:16 */
+  aspect-ratio: 9 / 16;
   overflow: hidden;
   background: #e5e7eb;
 }
 
-.igg-thumb {
+.ytg-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -83,37 +92,56 @@
   transition: transform 0.3s ease;
 }
 
-.igg-card:hover .igg-thumb {
+.ytg-card:hover .ytg-thumb {
   transform: scale(1.04);
 }
 
-.igg-thumb--placeholder {
+.ytg-thumb--placeholder {
   background: linear-gradient(135deg, #e5e7eb 25%, #d1d5db 100%);
 }
 
-.igg-type-badge {
+.ytg-play-icon {
   position: absolute;
-  top: 0.4rem;
-  right: 0.4rem;
-  background: rgba(0, 0, 0, 0.55);
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  pointer-events: none;
+}
+
+.ytg-card:hover .ytg-play-icon {
+  opacity: 1;
+}
+
+.ytg-shorts-badge {
+  position: absolute;
+  bottom: 0.4rem;
+  left: 0.4rem;
+  background: #ff0000;
   color: #fff;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
+  font-weight: 700;
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
-  backdrop-filter: blur(4px);
+  letter-spacing: 0.03em;
 }
 
 /* ── Card body ──────────────────────────────────────────────── */
-.igg-card-body {
+.ytg-card-body {
   padding: 0.6rem 0.75rem 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
 
-.igg-caption {
+.ytg-video-title {
   font-size: 0.76rem;
-  font-weight: 500;
+  font-weight: 600;
   color: #111827;
   line-height: 1.35;
   display: -webkit-box;
@@ -122,8 +150,17 @@
   overflow: hidden;
 }
 
+.ytg-channel {
+  font-size: 0.68rem;
+  color: #6b7280;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ── State views (loading / error / empty) ──────────────────── */
-.igg-state {
+.ytg-state {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -134,46 +171,46 @@
   text-align: center;
 }
 
-.igg-state--error {
+.ytg-state--error {
   color: #991b1b;
 }
 
-.igg-state-text {
+.ytg-state-text {
   font-size: 0.9rem;
   font-weight: 500;
   color: inherit;
   max-width: 420px;
 }
 
-.igg-state-hint {
+.ytg-state-hint {
   font-size: 0.78rem;
   color: #6b7280;
   max-width: 420px;
   line-height: 1.55;
 }
 
-.igg-state-hint code {
+.ytg-state-hint code {
   background: rgba(0, 0, 0, 0.07);
   padding: 0.1em 0.35em;
   border-radius: 3px;
   font-size: 0.9em;
 }
 
-.igg-error-icon {
+.ytg-error-icon {
   font-size: 2rem;
 }
 
 /* ── Spinner ────────────────────────────────────────────────── */
-.igg-spinner {
+.ytg-spinner {
   width: 36px;
   height: 36px;
   border: 3px solid rgba(0, 0, 0, 0.08);
-  border-top-color: #111827;
+  border-top-color: #ff0000;
   border-radius: 50%;
-  animation: igg-spin 0.7s linear infinite;
+  animation: ytg-spin 0.7s linear infinite;
 }
 
-@keyframes igg-spin {
+@keyframes ytg-spin {
   to { transform: rotate(360deg); }
 }
 
@@ -182,20 +219,20 @@
    ════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1100px) {
-  .igg-grid {
+  .ytg-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
   }
 }
 
 @media (max-width: 780px) {
-  .igg-grid {
+  .ytg-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
-  .igg-grid {
+  .ytg-grid {
     grid-template-columns: repeat(2, 1fr);
     padding: 0.75rem;
     gap: 0.6rem;
