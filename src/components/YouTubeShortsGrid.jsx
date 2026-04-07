@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { searchYouTubeShorts } from '../services/youtubeApi';
 import { YT_API_KEY } from '../constants/youtube';
 import './YouTubeShortsGrid.css';
@@ -34,13 +34,8 @@ export default function YouTubeShortsGrid({ day }) {
   const [status,   setStatus]   = useState(STATUS.IDLE);
   const [videos,   setVideos]   = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
-  const fetchedForDay = useRef(null);
 
   useEffect(() => {
-    // Avoid re-fetching if the same day is shown
-    if (fetchedForDay.current === day.dayNumber) return;
-    fetchedForDay.current = day.dayNumber;
-
     if (!YT_API_KEY) {
       setStatus(STATUS.ERROR);
       setErrorMsg('No YouTube API key configured. Add VITE_YT_API_KEY to your .env file.');
