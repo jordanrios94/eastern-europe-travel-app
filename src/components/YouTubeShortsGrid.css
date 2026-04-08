@@ -59,11 +59,7 @@
 .ytg-grid::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 2px; }
 
 /* ── Card ───────────────────────────────────────────────────── */
-/* aspect-ratio: 9/16 enforces portrait height in CSS Grid — the inline size
-   (column track) is definite, so the block size resolves correctly even
-   when all children are position:absolute. */
 .ytg-card {
-  aspect-ratio: 9 / 16;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
@@ -71,6 +67,16 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08), 0 4px 14px rgba(0, 0, 0, 0.06);
   color: inherit;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* All card children are position:absolute so the card has no in-flow content.
+   This ::before creates an in-flow box whose padding-top (always a % of the
+   containing block's *width*) forces the grid row to the correct 9:16 height.
+   height = (16/9) × card-width  →  portrait Shorts ratio. */
+.ytg-card::before {
+  content: '';
+  display: block;
+  padding-top: calc(16 / 9 * 100%);
 }
 
 /* Button-reset so the click-to-play wrapper fills the card */
