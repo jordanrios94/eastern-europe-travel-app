@@ -1,0 +1,163 @@
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Parallax background ─────────────────────────────────── */
+.hero-bg {
+  position: absolute;
+  inset: -25% 0;
+  background-image: url('https://picsum.photos/seed/eastern-europe-hero/1920/1080');
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+/* ── Dark gradient overlay ───────────────────────────────── */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 10, 30, 0.55) 0%,
+    rgba(5, 10, 30, 0.72) 60%,
+    rgba(5, 10, 30, 0.9) 100%
+  );
+}
+
+/* ── Content ─────────────────────────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 0.75rem;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2.5rem;
+}
+
+/* ── Route strip ─────────────────────────────────────────── */
+.hero-route {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.15rem;
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50px;
+  padding: 0.65rem 1.25rem;
+  backdrop-filter: blur(8px);
+  display: inline-flex;
+}
+
+.hero-route-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.hero-route-city {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.hero-route-arrow {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.75rem;
+  padding: 0 0.1rem;
+}
+
+/* ── Country chips ───────────────────────────────────────── */
+.hero-countries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 3rem;
+}
+
+.hero-country-chip {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  border: 1.5px solid;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(4px);
+}
+
+/* ── Scroll cue ──────────────────────────────────────────── */
+.hero-scroll-cue {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.2s;
+}
+
+.hero-scroll-cue:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.scroll-text {
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.scroll-arrow {
+  font-size: 1.4rem;
+  animation: bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hero-route {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .hero-route-city {
+    font-size: 0.7rem;
+  }
+}

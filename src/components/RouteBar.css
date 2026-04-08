@@ -1,0 +1,66 @@
+.route-bar {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.route-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.route-stops {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.1rem;
+}
+
+.route-stop-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.route-stop {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.route-stop:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.route-flag {
+  font-size: 1.1rem;
+}
+
+.route-arrow {
+  color: #9ca3af;
+  font-size: 1rem;
+  padding: 0 0.15rem;
+  font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  .route-bar {
+    padding: 1rem;
+  }
+
+  .route-stop {
+    font-size: 0.82rem;
+  }
+}
